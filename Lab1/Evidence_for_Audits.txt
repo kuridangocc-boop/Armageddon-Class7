@@ -1,0 +1,401 @@
+
+kurid@LAPTOP-E6UU0OED MINGW64 ~/documents/theowaf/class7/aws/armageddon
+$ aws ec2 describe-security-groups --group-ids sg-0a2d636263aa34738
+{
+    "SecurityGroups": [
+        {
+            "GroupId": "sg-0a2d636263aa34738",
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "-1",
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ],
+            "VpcId": "vpc-0b72cdb249313482b",
+            "SecurityGroupArn": "arn:aws:ec2:us-east-1:085089485330:security-group/sg-0a2d636263aa34738",
+            "OwnerId": "085089485330",
+            "GroupName": "lab_ec2_sg",
+            "Description": "Allows access to ec2 instance",
+            "IpPermissions": [
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 80,
+                    "ToPort": 80,
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                },
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 22,
+                    "ToPort": 22,
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ]
+        }
+    ]
+}
+
+
+kurid@LAPTOP-E6UU0OED MINGW64 ~/documents/theowaf/class7/aws/armageddon
+$ aws rds describe-db-instances --db-instance-identifier lab-mysql
+{
+    "DBInstances": [
+        {
+            "DBInstanceIdentifier": "lab-mysql",
+            "DBInstanceClass": "db.t4g.micro",
+            "Engine": "mysql",
+            "DBInstanceStatus": "available",
+            "MasterUsername": "admin",
+            "Endpoint": {
+                "Address": "lab-mysql.ccfog8cqu1vr.us-east-1.rds.amazonaws.com",                "Port": 3306,
+                "HostedZoneId": "Z2R2ITUGPM61AM"
+            },
+            "AllocatedStorage": 400,
+            "InstanceCreateTime": "2026-01-09T23:36:21.383000+00:00",
+            "PreferredBackupWindow": "07:10-07:40",
+            "BackupRetentionPeriod": 1,
+            "DBSecurityGroups": [],
+            "VpcSecurityGroups": [
+                {
+                    "VpcSecurityGroupId": "sg-06e6dac112af226c0",
+                    "Status": "active"
+                }
+            ],
+            "DBParameterGroups": [
+                {
+                    "DBParameterGroupName": "default.mysql8.0",
+                    "ParameterApplyStatus": "in-sync"
+                }
+            ],
+            "AvailabilityZone": "us-east-1a",
+            "DBSubnetGroup": {
+                "DBSubnetGroupName": "rds-ec2-db-subnet-group-3",
+                "DBSubnetGroupDescription": "Created from the RDS Management Console",
+                "VpcId": "vpc-0b72cdb249313482b",
+                "SubnetGroupStatus": "Complete",
+                "Subnets": [
+                    {
+                        "SubnetIdentifier": "subnet-08a2196ab8fb111b3",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-1a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-085f3999fe3182e59",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-1f"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-0dd439bf89e89ee7d",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-1d"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-09ecc806e2e693005",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-1e"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-07189ba28095eeea9",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-1b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    }
+                ]
+            },
+            "PreferredMaintenanceWindow": "wed:03:23-wed:03:53",
+            "PendingModifiedValues": {},
+            "LatestRestorableTime": "2026-01-10T02:40:00+00:00",
+            "MultiAZ": false,
+            "EngineVersion": "8.0.43",
+            "AutoMinorVersionUpgrade": true,
+            "ReadReplicaDBInstanceIdentifiers": [],
+            "LicenseModel": "general-public-license",
+            "OptionGroupMemberships": [
+                {
+                    "OptionGroupName": "default:mysql-8-0",
+                    "Status": "in-sync"
+                }
+            ],
+            "PubliclyAccessible": false,
+            "StorageType": "gp2",
+            "DbInstancePort": 0,
+            "StorageEncrypted": true,
+            "KmsKeyId": "arn:aws:kms:us-east-1:085089485330:key/712cd65b-4955-4cc9-8adb-0642cee39faf",
+            "DbiResourceId": "db-ZAVIXBWNE6IB5AV356J32JSE4A",
+            "CACertificateIdentifier": "rds-ca-rsa2048-g1",
+            "DomainMemberships": [],
+            "CopyTagsToSnapshot": true,
+            "MonitoringInterval": 0,
+            "DBInstanceArn": "arn:aws:rds:us-east-1:085089485330:db:lab-mysql",
+            "IAMDatabaseAuthenticationEnabled": false,
+            "DatabaseInsightsMode": "standard",
+            "PerformanceInsightsEnabled": false,
+            "EnabledCloudwatchLogsExports": [
+                "audit",
+                "error",
+                "general",
+                "iam-db-auth-error",
+                "slowquery"
+            ],
+            "DeletionProtection": false,
+            "AssociatedRoles": [],
+            "MaxAllocatedStorage": 1000,
+            "TagList": [],
+            "CustomerOwnedIpEnabled": false,
+            "ActivityStreamStatus": "stopped",
+            "BackupTarget": "region",
+            "NetworkType": "IPV4",
+            "StorageThroughput": 0,
+            "CertificateDetails": {
+                "CAIdentifier": "rds-ca-rsa2048-g1",
+                "ValidTill": "2027-01-09T23:35:03+00:00"
+            },
+            "DedicatedLogVolume": false,
+            "IsStorageConfigUpgradeAvailable": false,
+            "EngineLifecycleSupport": "open-source-rds-extended-support-disabled"
+        }
+    ]
+}
+
+
+kurid@LAPTOP-E6UU0OED MINGW64 ~/documents/theowaf/class7/aws/armageddon
+$ aws secretsmanager describe-secret --secret-id lab/rds/mysql
+{
+    "ARN": "arn:aws:secretsmanager:us-east-1:085089485330:secret:lab/rds/mysql-FHyMFE",
+    "Name": "lab/rds/mysql",
+    "LastChangedDate": "2026-01-05T19:24:40.398000-05:00",
+    "LastAccessedDate": "2026-01-09T19:00:00-05:00",
+    "Tags": [],
+    "VersionIdsToStages": {
+        "18397649-02b4-4fcc-8dcc-506b321d5bf7": [
+            "AWSCURRENT"
+        ]
+    },
+    "CreatedDate": "2026-01-05T19:24:40.360000-05:00"
+}
+
+
+kurid@LAPTOP-E6UU0OED MINGW64 ~/documents/theowaf/class7/aws/armageddon
+$ aws ec2 describe-instances --instance-ids i-0fab5f2d73d2b78b8
+{
+    "Reservations": [
+        {
+            "ReservationId": "r-0f78c8d631cb646b9",
+            "OwnerId": "085089485330",
+            "Groups": [],
+            "Instances": [
+                {
+                    "Architecture": "x86_64",
+                    "BlockDeviceMappings": [
+                        {
+                            "DeviceName": "/dev/xvda",
+                            "Ebs": {
+                                "AttachTime": "2026-01-09T23:27:00+00:00",
+                                "DeleteOnTermination": true,
+                                "Status": "attached",
+                                "VolumeId": "vol-08a4d9675630f0b33"
+                            }
+                        }
+                    ],
+                    "ClientToken": "703cea2b-c3cf-4ddf-811a-e2743c932a79",
+                    "EbsOptimized": true,
+                    "EnaSupport": true,
+                    "Hypervisor": "xen",
+                    "IamInstanceProfile": {
+                        "Arn": "arn:aws:iam::085089485330:instance-profile/laba_armageddon",
+                        "Id": "AIPARHT52QIJIM5XKE3SN"
+                    },
+                    "NetworkInterfaces": [
+                        {
+                            "Association": {
+                                "IpOwnerId": "amazon",
+                                "PublicDnsName": "ec2-18-212-109-220.compute-1.amazonaws.com",
+                                "PublicIp": "18.212.109.220"
+                            },
+                            "Attachment": {
+                                "AttachTime": "2026-01-09T23:26:59+00:00",
+                                "AttachmentId": "eni-attach-06660f1e981cf62c6",
+                                "DeleteOnTermination": true,
+                                "DeviceIndex": 0,
+                                "Status": "attached",
+                                "NetworkCardIndex": 0
+                            },
+                            "Description": "",
+                            "Groups": [
+                                {
+                                    "GroupId": "sg-0a2d636263aa34738",
+                                    "GroupName": "lab_ec2_sg"
+                                },
+                                {
+                                    "GroupId": "sg-0c47e71f980b48d1a",
+                                    "GroupName": "ec2-rds-1"
+                                }
+                            ],
+                            "Ipv6Addresses": [],
+                            "MacAddress": "0e:b0:be:b7:12:b3",
+                            "NetworkInterfaceId": "eni-084eeaccd42932a1c",
+                            "OwnerId": "085089485330",
+                            "PrivateDnsName": "ip-10-155-1-153.ec2.internal",
+                            "PrivateIpAddress": "10.155.1.153",
+                            "PrivateIpAddresses": [
+                                {
+                                    "Association": {
+                                        "IpOwnerId": "amazon",
+                                        "PublicDnsName": "ec2-18-212-109-220.compute-1.amazonaws.com",
+                                        "PublicIp": "18.212.109.220"
+                                    },
+                                    "Primary": true,
+                                    "PrivateDnsName": "ip-10-155-1-153.ec2.internal",
+                                    "PrivateIpAddress": "10.155.1.153"
+                                }
+                            ],
+                            "SourceDestCheck": true,
+                            "Status": "in-use",
+                            "SubnetId": "subnet-06295b7d0037f5338",
+                            "VpcId": "vpc-0b72cdb249313482b",
+                            "InterfaceType": "interface",
+                            "Operator": {
+                                "Managed": false
+                            }
+                        }
+                    ],
+                    "RootDeviceName": "/dev/xvda",
+                    "RootDeviceType": "ebs",
+                    "SecurityGroups": [
+                        {
+                            "GroupId": "sg-0a2d636263aa34738",
+                            "GroupName": "lab_ec2_sg"
+                        },
+                        {
+                            "GroupId": "sg-0c47e71f980b48d1a",
+                            "GroupName": "ec2-rds-1"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Tags": [
+                        {
+                            "Key": "Name",
+                            "Value": "ec2_lab_app"
+                        }
+                    ],
+                    "VirtualizationType": "hvm",
+                    "CpuOptions": {
+                        "CoreCount": 1,
+                        "ThreadsPerCore": 2
+                    },
+                    "CapacityReservationSpecification": {
+                        "CapacityReservationPreference": "open"
+                    },
+                    "HibernationOptions": {
+                        "Configured": false
+                    },
+                    "MetadataOptions": {
+                        "State": "applied",
+                        "HttpTokens": "required",
+                        "HttpPutResponseHopLimit": 2,
+                        "HttpEndpoint": "enabled",
+                        "HttpProtocolIpv6": "disabled",
+                        "InstanceMetadataTags": "disabled"
+                    },
+                    "EnclaveOptions": {
+                        "Enabled": false
+                    },
+                    "BootMode": "uefi-preferred",
+                    "PlatformDetails": "Linux/UNIX",
+                    "UsageOperation": "RunInstances",
+                    "UsageOperationUpdateTime": "2026-01-09T23:26:59+00:00",
+                    "PrivateDnsNameOptions": {
+                        "HostnameType": "ip-name",
+                        "EnableResourceNameDnsARecord": false,
+                        "EnableResourceNameDnsAAAARecord": false
+                    },
+                    "MaintenanceOptions": {
+                        "AutoRecovery": "default",
+                        "RebootMigration": "default"
+                    },
+                    "CurrentInstanceBootMode": "uefi",
+                    "NetworkPerformanceOptions": {
+                        "BandwidthWeighting": "default"
+                    },
+                    "Operator": {
+                        "Managed": false
+                    },
+                    "InstanceId": "i-0fab5f2d73d2b78b8",
+                    "ImageId": "ami-07ff62358b87c7116",
+                    "State": {
+                        "Code": 16,
+                        "Name": "running"
+                    },
+                    "PrivateDnsName": "ip-10-155-1-153.ec2.internal",
+                    "PublicDnsName": "ec2-18-212-109-220.compute-1.amazonaws.com",
+                    "StateTransitionReason": "",
+                    "KeyName": "armageddon_010726",
+                    "AmiLaunchIndex": 0,
+                    "ProductCodes": [],
+                    "InstanceType": "t3.micro",
+                    "LaunchTime": "2026-01-09T23:26:59+00:00",
+                    "Placement": {
+                        "AvailabilityZoneId": "use1-az6",
+                        "GroupName": "",
+                        "Tenancy": "default",
+                        "AvailabilityZone": "us-east-1a"
+                    },
+                    "Monitoring": {
+                        "State": "disabled"
+                    },
+                    "SubnetId": "subnet-06295b7d0037f5338",
+                    "VpcId": "vpc-0b72cdb249313482b",
+                    "PrivateIpAddress": "10.155.1.153",
+                    "PublicIpAddress": "18.212.109.220"
+                }
+            ]
+        }
+    ]
+}
+
+
+kurid@LAPTOP-E6UU0OED MINGW64 ~/documents/theowaf/class7/aws/armageddon
+$ aws iam list-attached-role-policies --role-name laba_armageddon
+{
+    "AttachedPolicies": [
+        {
+            "PolicyName": "armageddon_laba_secretpolicy",
+            "PolicyArn": "arn:aws:iam::085089485330:policy/armageddon_laba_secretpolicy"
+        }
+    ]
+}
+
