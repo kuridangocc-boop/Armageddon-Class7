@@ -114,7 +114,7 @@ arn:aws:iam::085089485330:role/laba_armageddon
 dnf install mariadb105 -y
 
 Launched EC2 instance.
-![](./lab-1a-Kuridango/Armageddon laba appendix 1.1.png)
+![](./screenshots/Armageddon laba appendix 1.1.png)
 
 5. Attach role to instance:
 steps:
@@ -122,7 +122,7 @@ Go to Modify IAM Role via Instance > Actions > Security > Modify IAM Role
 Attach the role that was just created under 'IAM Role',
 click 'Update IAM Role',
 
-![](./lab-1a-Kuridango/Armageddon laba appendix 1.2.png)
+![](./screeneshots/Armageddon laba appendix 1.2.png)
 
 6. Create RDS Database:
 Go to create database under 'Aurora and RDS',
@@ -141,7 +141,7 @@ Public Access = 'No',
 For VPC Security Group check 'Create New',
 Enable Logs then 'Create Database',
 
-![](./lab-1a-Kuridango/Armageddon laba appendix 1.3.png)
+![](./screeneshots/Armageddon laba appendix 1.3.png)
 lab-mysql.ccfog8cqu1vr.us-east-1.rds.amazonaws.com
 085089485330
 
@@ -239,7 +239,7 @@ In MYSQL prompt, type "CREATE DATEBASE labdb;"
 In MYSQL prompt, type "SHOW DATABASES;"
 it will show new db created in rds
 
-![](./lab-1a-Kuridango/Armageddon laba appendix 1.5.png)
+![](./screeneshots/Armageddon laba appendix 1.5.png)
 
 
 To exit MYSQL type "exit" enter
@@ -267,7 +267,7 @@ List all security groups in a region
       --query "SecurityGroups[].{GroupId:GroupId,Name:GroupName,VpcId:VpcId}" \
       --output table
 
-![](./lab-1a-Kuridango/AWSCLI_screenshot2.1.png)
+![](./screeneshots/AWSCLI_screenshot2.1.png)
 
 Inspect a specific security group (inbound & outbound rules)
 
@@ -276,7 +276,7 @@ Inspect a specific security group (inbound & outbound rules)
       --region us-east-1 \
       --output json
 
-![](./lab-1a-Kuridango/AWSCLI_screenshot2.2.png)
+![](./screeneshots/AWSCLI_screenshot2.2.png)
 
 Verify which resources are using the security group
 EC2 instances
@@ -287,7 +287,7 @@ EC2 instances
       --query "Reservations[].Instances[].InstanceId" \
       --output table
 
-![](./lab-1a-Kuridango/AWSCLI_screenshot2.3.png)
+![](./screeneshots/AWSCLI_screenshot2.3.png)
 
 RDS instances
 
@@ -296,7 +296,7 @@ RDS instances
       --query "DBInstances[?contains(VpcSecurityGroups[].VpcSecurityGroupId, 'sg-0a2d636263aa34738')].DBInstanceIdentifier" \
       --output table
 
-![](./lab-1a-Kuridango/AWSCLI_screenshot2.4.png)
+![](./screeneshots/AWSCLI_screenshot2.4.png)
 
 List all RDS instances
 
@@ -305,7 +305,7 @@ List all RDS instances
       --query "DBInstances[].{DB:DBInstanceIdentifier,Engine:Engine,Public:PubliclyAccessible,Vpc:DBSubnetGroup.VpcId}" \
       --output table
 
-![](./lab-1a-Kuridango/AWSCLI_screenshot2.5.png)
+![](./screeneshots/AWSCLI_screenshot2.5.png)
 
 Inspect a specific RDS instance
 
@@ -314,7 +314,7 @@ Inspect a specific RDS instance
       --region us-east-1 \
       --output json
 
-![](./lab-1a-Kuridango/AWSCLI_screenshot2.6.png)
+![](./screeneshots/AWSCLI_screenshot2.6.png)
 
 Critical checks
     "PubliclyAccessible": false
@@ -330,7 +330,7 @@ Verify RDS security groups explicitly
       --query "DBInstances[].VpcSecurityGroups[].VpcSecurityGroupId" \
       --output table
 
-![](./lab-1a-Kuridango/AWSCLI_screenshot2.7.png)
+![](./screeneshots/AWSCLI_screenshot2.7.png)
 
 Verify RDS subnet placement
 
@@ -339,7 +339,7 @@ Verify RDS subnet placement
       --query "DBSubnetGroups[].{Name:DBSubnetGroupName,Vpc:VpcId,Subnets:Subnets[].SubnetIdentifier}" \
       --output table
 
-![](./lab-1a-Kuridango/AWSCLI_screenshot2.8.png)
+![](./screeneshots/AWSCLI_screenshot2.8.png)
 
 What you’re verifying
     Private subnets only
@@ -355,7 +355,7 @@ Check if RDS is publicly reachable (quick flag)
       --query "DBInstances[].PubliclyAccessible" \
       --output text
 
-![](./lab-1a-Kuridango/AWSCLI_screenshot2.9.png)
+![](./screeneshots/AWSCLI_screenshot2.9.png)
 
 Expected output: false
 Verify Secrets Manager (Existence, Metadata, Access)
@@ -365,7 +365,7 @@ Verify Secrets Manager (Existence, Metadata, Access)
       --query "SecretList[].{Name:Name,ARN:ARN,Rotation:RotationEnabled}" \
       --output table
 
-![](./lab-1a-Kuridango/AWSCLI_screenshot2.10.png)
+![](./screeneshots/AWSCLI_screenshot2.10.png)
 
 What you’re verifying
     Secret exists
@@ -379,7 +379,7 @@ Describe a specific secret (NO value exposure)
       --region us-east-1 \
       --output json
 
-![](./lab-1a-Kuridango/AWSCLI_screenshot2.11.png)
+![](./screeneshots/AWSCLI_screenshot2.11.png)
 
 Key fields to check
     RotationEnabled
@@ -393,7 +393,7 @@ Verify which IAM principals can access the secret
       --region us-east-1 \
       --output json
 
-![](./lab-1a-Kuridango/AWSCLI_screenshot2.12.png)
+![](./screeneshots/AWSCLI_screenshot2.12.png)
 
 What you’re verifying
     Only expected roles are listed
@@ -408,7 +408,7 @@ Verify IAM Role Attached to an EC2 Instance
       --query "Reservations[].Instances[].InstanceId" \
       --output text
 
-![](./lab-1a-Kuridango/AWSCLI_screenshot2.13.png)
+![](./screeneshots/AWSCLI_screenshot2.13.png)
 
   Step 2: Check the IAM role attached to the instance
 
@@ -418,7 +418,7 @@ Verify IAM Role Attached to an EC2 Instance
       --query "Reservations[].Instances[].IamInstanceProfile.Arn" \
       --output text
 
-![](./lab-1a-Kuridango/AWSCLI_screenshot2.14.png)
+![](./screeneshots/AWSCLI_screenshot2.14.png)
 
 Expected: arn:aws:sts::085089485330:assumed-role/laba_armageddon
 
@@ -431,7 +431,7 @@ If empty → no role attached (this is a finding).
       --query "InstanceProfile.Roles[].RoleName" \
       --output text
 
-![](./lab-1a-Kuridango/AWSCLI_screenshot2.15.png)
+![](./screeneshots/AWSCLI_screenshot2.15.png)
 
 
 Verify IAM Role Permissions (Critical)
@@ -441,7 +441,7 @@ List policies attached to the role
       --role-name laba_armageddon \
       --output table
 
-![](./lab-1a-Kuridango/AWSCLI_screenshot2.16.png)
+![](./screeneshots/AWSCLI_screenshot2.16.png)
 
 List inline policies (often forgotten)
 
@@ -449,7 +449,7 @@ List inline policies (often forgotten)
       --role-name laba_armageddon \
       --output table
 
-![](./lab-1a-Kuridango/AWSCLI_screenshot2.17.png)
+![](./screeneshots/AWSCLI_screenshot2.17.png)
 
 Inspect a specific managed policy
 
@@ -458,7 +458,7 @@ Inspect a specific managed policy
       --version-id v1 \
       --output json
 
-![](./lab-1a-Kuridango/AWSCLI_screenshot2.18.png)
+![](./screeneshots/AWSCLI_screenshot2.18.png)
 
 What you’re verifying
     Least privilege
@@ -471,13 +471,13 @@ Verify EC2 → RDS access path (security-group–to–security-group)
       --region us-east-1 \
       --query "SecurityGroups[].IpPermissions"
 
-![](./lab-1a-Kuridango/AWSCLI_screenshot2.19.png)
+![](./screeneshots/AWSCLI_screenshot2.19.png)
 
     aws secretsmanager describe-secret \
       --secret-id lab/rds/mysql \
       --region us-east-1
 
-![](./lab-1a-Kuridango/AWSCLI_screenshot2.20.png)
+![](./screeneshots/AWSCLI_screenshot2.20.png)
 
 If this works:
     IAM role is correctly attached
@@ -486,11 +486,11 @@ If this works:
 Student Deliverables:
 1) Screenshot of:
   RDS SG inbound rule using source = lab_ec2_sg
-    ![](./lab-1a-Kuridango/Armageddon_Student_Deliverables1.png)
+    ![](./screeneshots/Armageddon_Student_Deliverables1.png)
   EC2 role attached
-    ![](./lab-1a-Kuridango/Armageddon laba appendix 1.2.png)
+    ![](./screeneshots/Armageddon laba appendix 1.2.png)
   /list output showing at least 3 notes
-    ![](./lab-1a-Kuridango/EC2_Public_IP_Notes_List.png)
+    ![](./screeneshots/EC2_Public_IP_Notes_List.png)
 
 2) Short answers:
   A) Why is DB inbound source restricted to the EC2 security group? 
@@ -509,7 +509,7 @@ Student Deliverables:
       aws iam list-attached-role-policies --role-name laba_armageddon > role-policies.json
 
 
-```kurid@LAPTOP-E6UU0OED MINGW64 ~/documents/theowaf/class7/aws/armageddon
+kurid@LAPTOP-E6UU0OED MINGW64 ~/documents/theowaf/class7/aws/armageddon
 $ aws ec2 describe-security-groups --group-ids sg-0a2d636263aa34738
 {
     "SecurityGroups": [
@@ -907,7 +907,7 @@ $ aws iam list-attached-role-policies --role-name laba_armageddon
             "PolicyArn": "arn:aws:iam::085089485330:policy/armageddon_laba_secretpolicy"
         }
     ]
-}```
+}
 
 Then Answer:
     Why each rule exists
